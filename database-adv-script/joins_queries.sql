@@ -23,7 +23,10 @@ SELECT
     review.created_at AS review_date
 FROM Property AS property
 LEFT JOIN Review AS review ON 
-  property.property_id = review.property_id;
+  property.property_id = review.property_id
+ORDER BY 
+    property.name ASC,
+    review.created_at DESC;
 
 -- 3. Retrieve all users and all bookings, even if the user has no booking or a booking is not linked to a user, using a FULL OUTER JOIN
 -- Note: FULL OUTER JOIN is not supported in some databases like MySQL. For MySQL, UNION can be used as a workaround.
