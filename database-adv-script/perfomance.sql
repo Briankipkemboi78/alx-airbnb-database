@@ -20,7 +20,11 @@ JOIN User AS user ON
 JOIN Property AS property ON 
   booking.property_id = property.property_id
 JOIN Payment AS payment ON 
-  booking.booking_id = payment.booking_id;
+  booking.booking_id = payment.booking_id
+WHERE 
+    booking.booking_date >= '2024-01-01'
+    AND booking.booking_date <= '2024-12-31'
+    AND property.location = 'Nairobi';
 
 -- Refactored Query: Optimized with indexing and reduced unnecessary columns
 SELECT 
@@ -38,5 +42,9 @@ JOIN User AS user ON
 JOIN Property AS property ON 
   booking.property_id = property.property_id
 LEFT JOIN Payment AS payment ON 
-  booking.booking_id = payment.booking_id;
+  booking.booking_id = payment.booking_id
+WHERE
+  booking.booking_date >= '2024-01-01' AND 
+  booking.booking_date <= '2024-12-31' AND 
+  property.location = 'Nairobi';
 
